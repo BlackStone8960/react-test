@@ -29,7 +29,7 @@ function App() {
   ]
   return (
     <div className="App">
-      
+      {studentList.map((s) => <p>{s.name}</p>)}
     </div>
   );
 }
