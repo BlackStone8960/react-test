@@ -1,5 +1,5 @@
 ### Instructions from Spinndle
-This is a react exersize based on a feature we have just made. Teachers wanted to be able to organize students in a classroom into groups, in order to assign different projects to different abilities. 
+This is a react exercize based on a feature we have just made. Teachers wanted to be able to organize students in a classroom into groups, in order to assign different projects to different abilities. 
 
 Please use the object named studentList in App.js to create a feature that organizes students into groups. Here are some constraints:
 
