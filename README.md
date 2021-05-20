@@ -9,7 +9,7 @@ Please use the object named studentList in App.js to create a feature that organ
 
 Keep it as simple as you want, as we respect your time, but state any assumptions/next steps. See possible wireframes in the public folder, but feel free to create it however you would like!
 
-Instuctions for running this project can be seen below. Please clone this repo and fork it with your changes!
+Instuctions for running this project can be seen below. Please clone this repo and fork it with your changes! (Or just grab the data from App.js and create your own repo, whatever is easier.)
 
 # Getting Started with Create React App
 
