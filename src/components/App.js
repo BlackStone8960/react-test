@@ -1,37 +1,27 @@
+import React, { createContext, useReducer } from 'react';
+import GroupBoard from './GroupBoard/GroupBoard';
+import initialStudentsState from '../studentList/studentList';
+import studentsReducer from '../reducers/students';
 import './App.css';
 
+const StudentContext = createContext();
+
 function App() {
-  const studentList = [
-    {
-      name: "Bob",
-      id: 1
-    },
-    {
-      name: "Albert",
-      id: 2
-    },
-    {
-      name: "Shania",
-      id: 3
-    },
-    {
-      name: "Erika",
-      id: 4
-    },
-    {
-      name: "Desmond",
-      id: 5
-    },
-    {
-      name: "Shai",
-      id: 6
-    },
-  ]
+  const [studentsState, dispatchStudents] = useReducer(studentsReducer, initialStudentsState);
+
   return (
     <div className="App">
-      {studentList.map((s) => <p>{s.name}</p>)}
+      <div>
+        <h2>Create Groups</h2>
+        <div>
+          <p>Select a group of students and click "Create Group"</p>
+        </div>
+      </div>
+      <StudentContext.Provider value={{ studentsState, dispatchStudents }}>
+        <GroupBoard />
+      </StudentContext.Provider>
     </div>
   );
 }
 
-export default App;
+export { StudentContext, App as default };

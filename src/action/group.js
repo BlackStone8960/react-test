@@ -1,11 +1,12 @@
-export const createGroup = (students) => ({
-  type: "CREATE_GROUP",
-  students
+export const createGroups = (groups) => ({
+  type: "CREATE_GROUPS",
+  groups
 });
-export const editGroup = (students) => ({
+export const editGroup = (group) => ({
   type: "EDIT_GROUP",
-  students
+  group
 });
-export const removeGroup = () => ({
-  type: "REMOVE_GROUP",
+export const deleteGroup = (groupIndex) => ({
+  type: "DELETE_GROUP",
+  groupIndex
 });

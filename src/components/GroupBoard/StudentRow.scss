@@ -1,0 +1,13 @@
+.student-row-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 500px;
+}
+
+.checkbox {
+  border: 1px solid #111;
+  width: 16px;
+  height: 16px;
+  margin: 8px;
+}

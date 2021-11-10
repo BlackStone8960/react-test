@@ -1,15 +1,12 @@
 import { createStore, combineReducers, compose } from "redux";
-import groupReducer from "../reducers/group";
+import groupsReducer from "../reducers/groups";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default () => {
   const store = createStore(
     combineReducers({
-      groupOne: groupReducer,
-      groupTwo: groupReducer,
-      groupThree: groupReducer,
-      groupFour: groupReducer
+      groups: groupsReducer,
     }),
     composeEnhancers()
   );
