@@ -1,4 +1,4 @@
-export default (state = [], action) => {
+const groupsReducer = (state = [], action) => {
   switch (action.type) {
     case 'CREATE_GROUPS': 
       return action.groups;
@@ -14,3 +14,5 @@ export default (state = [], action) => {
       return state;
   }
 };
+
+export default groupsReducer;

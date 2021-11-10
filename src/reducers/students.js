@@ -11,6 +11,8 @@ const studentsReducer = (state, action) => {
           return student;
         }
       });
+    default:
+      return state;
   }
 }
 

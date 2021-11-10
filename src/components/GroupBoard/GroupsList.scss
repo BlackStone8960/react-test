@@ -1,0 +1,23 @@
+.group-container {
+  margin-top: 36px;
+
+  .group-wrapper {
+    margin-bottom: 20px;
+
+    .group-header {
+      display: flex;
+      justify-content: left;
+      align-items: flex-start;
+    
+      .group-numbering {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+    }
+
+    .group-student-name {
+      margin-right: 4px;
+    }
+  }
+}

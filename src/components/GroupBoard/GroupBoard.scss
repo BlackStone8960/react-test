@@ -1,0 +1,39 @@
+.top-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 62%;
+  margin: 36px auto 28px;
+}
+
+.group-row {
+  margin-left: 118px;
+  text-align: center;
+  font-size: 10px;
+
+  .group-text {
+    margin-right: 16px;
+  }
+}
+
+.bottom-buttons {
+  text-align: right;
+  padding: 24px;
+
+  .create-group {
+    margin-left: 32px;
+    background-color: lightcoral;
+
+    &:hover {
+      background-color: darken($color: lightcoral, $amount: 5%);
+    }
+  }
+}
+
+.error-sentence {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+  padding: 16px 0;
+}

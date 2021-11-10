@@ -4,8 +4,10 @@ import StudentRow from './StudentRow';
 import { createGroups } from '../../action/group';
 import { useDispatch, useSelector } from 'react-redux';
 import GroupsList from './GroupsList';
+import Button from '@material-ui/core/Button';
+import './GroupBoard.scss';
 
-const initialGroupNum = 3;
+const initialGroupNum = 4;
 const groupsSelector = state => state.groups;
 
 const GroupBoard = () => {
@@ -16,45 +18,92 @@ const GroupBoard = () => {
   const [emptyGroups, setEmptyGroups] = useState([]);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const tempArr = [];
-    for (let i = 0; i < numOfGroup; i++) {
-      tempArr.push([]);
+  const makeGroupEmpty = () => {
+    if (numOfGroup) {
+      const tempArr = [];
+      for (let i = 0; i < numOfGroup; i++) {
+        tempArr.push([]);
+      }
+      setEmptyGroups(tempArr);
     }
-    setEmptyGroups(tempArr);
+  };
+
+  useEffect(() => {
+    makeGroupEmpty();
+
+    // if the groups students joined has been deleted, reset their group numbers.
+    for (let i in studentsState) {
+      if (studentsState[i].groupNum > numOfGroup) { 
+        studentsState[i].groupNum = null;
+      }
+    }
   }, [numOfGroup]);
   
   const onCreateGroup = () => {
+    makeGroupEmpty(emptyGroups);
     const createdGroups = [...emptyGroups];
     for (let i in studentsState) {
       const student = studentsState[i];
+      const groupNum = student.groupNum;
+
       // if user doesn't asign each student to any groups, show them error messages
-      if (student.groupNum === null) {
+      if (groupNum === null || groupNum > numOfGroup) {
         setError('There are students who do not join the groups');
         return; 
       } 
 
       // push every students' information to a group array
-      createdGroups[student.groupNum - 1].push(student);
+      createdGroups[groupNum - 1].push(student);
     }
     dispatch(createGroups(createdGroups));
     console.log(createdGroups); // log created groups to console
+    setError('');
   };
 
   return (
     <div>
       <GroupsList groups={groups} />
-      <button onClick={() => numOfGroup < 6 && setNumOfGroup(numOfGroup + 1)}>
-        +
-      </button>
+      <div className="top-buttons">
+        <Button 
+          onClick={() => numOfGroup < 6 && setNumOfGroup(numOfGroup + 1)}
+          variant="contained"
+          style={{ fontSize: "12px", padding: "2px 8px" }}
+        >
+          INCREASE GROUP
+        </Button>
+        <Button
+          onClick={() => numOfGroup > 2 && setNumOfGroup(numOfGroup - 1)}
+          variant="contained"
+          style={{ fontSize: "12px", padding: "2px 8px" }}
+        >
+          DECREASE GROUP
+        </Button>
+      </div>
+      {(() =>  { 
+        const columns = [];
+        for (let i = 1; i <= numOfGroup; i++) {
+          columns.push(
+            <span key={i} className="group-text">{`GROUP ${i}`}</span>
+          )
+        }
+        return <div className="group-row">{ columns }</div>;
+      })()}
       { studentsState && studentsState.map((student) => (
         <React.Fragment key={student.name}>
           <StudentRow student={student} numOfGroup={numOfGroup}/>
         </React.Fragment>
       ))}
       <div className="error-sentence">{error}</div>
-      <button>Done</button>
-      <button onClick={onCreateGroup}>Create Group</button>
+      <div className="bottom-buttons">
+        <Button color="default" variant="contained">Done</Button>
+        <Button
+          onClick={onCreateGroup}
+          className="create-group"
+          variant="contained"
+        >
+          Create Group
+        </Button>
+      </div>
     </div>
   )
 }
