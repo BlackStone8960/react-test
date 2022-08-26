@@ -1,16 +1,3 @@
-### Instructions from Spinndle
-This is a react exercize based on a feature we have just made. Teachers wanted to be able to organize students in a classroom into groups, in order to assign different projects to different abilities. 
-
-Please use the object named studentList in App.js to create a feature that organizes students into groups. Here are some constraints:
-
-- Each student must be in a group on submit
-- Teachers must be able to add or remove additional groups
-- A submit button should console.log an array of groups that could be used by a backend
-
-Keep it as simple as you want, as we respect your time, but state any assumptions/next steps. See possible wireframes in the public folder, but feel free to create it however you would like!
-
-Instuctions for running this project can be seen below. Please clone this repo and fork it with your changes! (Or just grab the data from App.js and create your own repo, whatever is easier.)
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
